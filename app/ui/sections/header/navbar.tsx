@@ -1,81 +1,107 @@
-'use client'
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaSearch, FaBell, FaUser } from 'react-icons/fa';
+import { FaSearch, FaUser, FaHeart, FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import CustomIcon from '../../primitives/Icon';
 import CustomLink from '../../primitives/Link';
 import CustomButton from '../../primitives/Button';
-
-import { useState } from 'react';
+import MobileNav from './mobileNav';
 
 const Navbar = () => {
-  
   const [user, setUser] = useState("");
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const handleMobileNavToggle = () => setMobileNavOpen(!isMobileNavOpen);
+
   return (
-    <nav className="bg-fd-pink-lite shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/">
-              <Image src="/app-logo-compressed-black.png" alt="Logo" width={100} height={40} />
-            </Link>
-          </div>
+    <>
+      <nav className="bg-fd-pink-lite shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo and Hamburger Icon */}
+            <div className="flex items-center w-full">
+              <div className="flex-shrink-0">
+                <Link href="/">
+                  <Image src="/assets/app-logo-compressed-black.png" alt="Logo" width={100} height={40} />
+                </Link>
+              </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex md:space-x-2">
-          </div>
-            <CustomLink href="/" variant='text'>
-              Home
-            </CustomLink>           
-            <CustomLink href="/" variant='text'>
-              Shop
-            </CustomLink>           
-            <CustomLink href="/" variant='text'>
-              Contact
-            </CustomLink>           
-            <CustomLink href="/" variant='text'>
-              About
-            </CustomLink> 
-            {user ? (
-              <CustomLink href="/" variant='text'>
-              Profile
-            </CustomLink>
-            ) : (
-              <>
-                <CustomButton variant="primary">
-                  Login
-                </CustomButton>
-                <CustomLink href="/" variant='text'>
-                  Signup
+              {/* Hamburger Icon */}
+              <div className="ml-auto block md:hidden">
+                <button onClick={handleMobileNavToggle} aria-label="Toggle Navigation">
+                  <CustomIcon Icon={FaBars} size="24" variant="text" />
+                </button>
+              </div>
+
+              {/* Navigation Links (Desktop) */}
+              <div className="hidden md:flex items-center gap-6 space-x-4 ml-8">
+                <CustomLink href="/" variant="text">
+                  Home
                 </CustomLink>
-
-              </>
-            )}          
-
-          {/* Search Bar and Icons */}
-          <div className="flex items-center space-x-4">
-            {/* Search Bar */}
-            <div className="relative">
-              <input
-                type="text"
-                className="bg-fd-pink-dark rounded-full pl-4 pr-10 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-white"
-                placeholder="Search..."
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                <FaSearch className="text-gray-500" />
+                <CustomLink href="/" variant="text">
+                  Shop
+                </CustomLink>
+                <CustomLink href="/" variant="text">
+                  Contact
+                </CustomLink>
+                <CustomLink href="/" variant="text">
+                  About
+                </CustomLink>
+                {user ? (
+                  <CustomLink href="/" variant="text">
+                    Profile
+                  </CustomLink>
+                ) : (
+                  <>
+                    <CustomButton variant="primary">
+                      Login
+                    </CustomButton>
+                    <CustomLink href="/" variant="text">
+                      Signup
+                    </CustomLink>
+                  </>
+                )}
               </div>
             </div>
 
-            {/* Icons */}
-            <CustomIcon Icon={FaBell} size="24" variant="text" />
-            <CustomIcon Icon={FaUser} size="24" variant="text" />
-            <CustomIcon Icon={FaSearch} size="24" variant="text" />
+            {/* Search Bar and Icons */}
+            <div className="hidden md:flex items-center space-x-4 ml-auto">
+              <div className="relative">
+                <input
+                  type="text"
+                  className="bg-white rounded-full pl-4 pr-10 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-fd-pink-dark"
+                  placeholder="Search..."
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <CustomIcon Icon={FaSearch} size="16" variant="primary" />
+                </div>
+              </div>
+              {user ? (
+                <>
+                  <button>
+                    <CustomIcon Icon={FaUser} size="24" variant="text" />
+                  </button>
+                  <button>
+                    <CustomIcon Icon={FaHeart} size="24" variant="text" />
+                  </button>
+                  <button>
+                    <CustomIcon Icon={FaShoppingCart} size="24" variant="text" />
+                  </button>
+                </>
+              ) : (
+                <button>
+                  <CustomIcon Icon={FaShoppingCart} size="24" variant="text" />
+                </button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <MobileNav isOpen={isMobileNavOpen} onClose={handleMobileNavToggle} user={user} />
+    </>
   );
 };
 
