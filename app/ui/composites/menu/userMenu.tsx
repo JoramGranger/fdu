@@ -30,12 +30,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
   }, []);
 
   return (
-    <div className="relative bg-fd-pink-lite" ref={menuRef}>
+    <div className="relative z-50 bg-fd-pink-lite" ref={menuRef}>
       <button onClick={handleToggle} aria-label="User Menu">
         <CustomIcon Icon={FaUser} size="24" variant="text" />
       </button>
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 border border-fd-pink-dark bg-fd-pink-lite rounded-md shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-64 border border-fd-pink-dark bg-fd-pink-lite rounded-md shadow-lg">
           <div className="py-2">
             <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-fd-pink-dark hover:text-black">
               <div className="flex items-center">

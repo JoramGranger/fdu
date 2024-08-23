@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 /* styled components */
@@ -10,7 +10,7 @@ const scroll = keyframes`
   100% {
     transform: translateX(-20%);
   }
-`
+`;
 
 const Container = styled.div`
     height: 30px;
@@ -27,12 +27,16 @@ const Container = styled.div`
     width: 100%;
     position: relative;
     z-index: 10;
+
+    /* Hide on mobile */
+    @media (max-width: 767px) {
+        display: none;
+    }
 `;
 
 const Marquee = styled.div`
     display: inline-block;
     white-space: nowrap;
-    /* padding-left: 100%; */
     animation: ${scroll} 10s linear infinite;
 `;
 

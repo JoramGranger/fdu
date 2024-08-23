@@ -7,6 +7,7 @@ import CustomLink from '../../primitives/Link';
 import CustomButton from '../../primitives/Button';
 import CustomIcon from '../../primitives/Icon';
 import { autoBatchEnhancer } from '@reduxjs/toolkit';
+import MainMenu from '../../composites/menu/mainMenu';
 
 
 const MobileNav = ({ isOpen, onClose, user }) => {
@@ -22,34 +23,7 @@ const MobileNav = ({ isOpen, onClose, user }) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col p-4 space-y-4">
-        <CustomLink href="/" variant="text" onClick={onClose}>
-          Home
-        </CustomLink>
-        <CustomLink href="/" variant="text" onClick={onClose}>
-          Shop
-        </CustomLink>
-        <CustomLink href="/" variant="text" onClick={onClose}>
-          Contact
-        </CustomLink>
-        <CustomLink href="/" variant="text" onClick={onClose}>
-          About
-        </CustomLink>
-        {user ? (
-          <CustomLink href="/" variant="text" onClick={onClose}>
-            Logout
-          </CustomLink>
-        ) : (
-          <>
-            <CustomButton variant="primary" onClick={onClose}>
-              Login
-            </CustomButton>
-            <CustomLink href="/" variant="text" onClick={onClose}>
-              Signup
-            </CustomLink>
-          </>
-        )}
-      </div>
+      <MainMenu user={user} onClose={onClose} variant='mobile'/>
     </div>
   );
 };

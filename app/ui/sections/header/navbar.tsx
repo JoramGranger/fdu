@@ -8,6 +8,7 @@ import CustomLink from '../../primitives/Link';
 import CustomButton from '../../primitives/Button';
 import MobileNav from './mobileNav';
 import UserMenu from '../../composites/menu/userMenu';
+import MainMenu from '../../composites/menu/mainMenu';
 import MiniCart from '../../composites/cart/MiniCart';
 
 const Navbar = () => {
@@ -35,45 +36,18 @@ const Navbar = () => {
 
               <div className="flex-shrink-0">
                 <Link href="/">
-                  <Image src="/assets/app-logo-compressed-black.png" alt="Logo" width={100} height={40} />
+                  <Image src="/assets/app-logo-compressed-black.png" alt="Logo" width={100} height={40} style={{height: '40', width: 'auto'}} />
                 </Link>
               </div>
 
               <div className="ml-auto block md:hidden">
-                  <button onClick={handleMiniCartToggle} aria-label="Toggle Mini Cart">
-                    <CustomIcon Icon={FaShoppingCart} size="24" variant="text" />
-                  </button>
+                <button onClick={handleMiniCartToggle} aria-label="Toggle Mini Cart">
+                  <CustomIcon Icon={FaShoppingCart} size="24" variant="text" />
+                </button>
               </div>
 
               {/* Navigation Links (Desktop) */}
-              <div className="hidden md:flex items-center bg-fd-pink-lite gap-6 space-x-4 ml-8">
-                <CustomLink href="/" variant="text">
-                  Home
-                </CustomLink>
-                <CustomLink href="/" variant="text">
-                  Shop
-                </CustomLink>
-                <CustomLink href="/" variant="text">
-                  Contact
-                </CustomLink>
-                <CustomLink href="/" variant="text">
-                  About
-                </CustomLink>
-                {user ? (
-                  <CustomLink href="/" variant="text">
-                    Logout
-                  </CustomLink>
-                ) : (
-                  <>
-                    <CustomButton variant="primary">
-                      Login
-                    </CustomButton>
-                    <CustomLink href="/" variant="text">
-                      Signup
-                    </CustomLink>
-                  </>
-                )}
-              </div>
+              <MainMenu user={user} variant="desktop" />
             </div>
 
             {/* Search Bar and Icons */}
@@ -81,11 +55,12 @@ const Navbar = () => {
               <div className="relative">
                 <input
                   type="text"
-                  className="bg-white rounded-full pl-4 pr-10 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-fd-pink-dark"
+                  className="bg-white rounded-full pl-4 pr-10 py-2 w-96 focus:outline-none focus:ring-2 focus:ring-fd-pink-dark shadow-md"
                   placeholder="Search..."
+                  style={{ border: "1px solid #FFB6C1" }} // Added border to match the pink theme
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <CustomIcon Icon={FaSearch} size="16" variant="primary" />
+                  <CustomIcon Icon={FaSearch} size="16" variant="primary" style={{ color: '#FFB6C1' }} />
                 </div>
               </div>
               {user ? (
@@ -99,7 +74,7 @@ const Navbar = () => {
                   </button>
                 </>
               ) : (
-                <button>
+                <button onClick={handleMiniCartToggle} aria-label="Toggle Mini Cart">
                   <CustomIcon Icon={FaShoppingCart} size="24" variant="text" />
                 </button>
               )}
@@ -113,6 +88,21 @@ const Navbar = () => {
 
       {/* Mini Cart */}
       <MiniCart isOpen={isMiniCartOpen} onClose={handleMiniCartToggle} cartItems={cartItems} />
+
+      {/* Mobile Search Bar */}
+      <div className={`fixed inset-x-0 top-16 bg-fd-pink-lite transition-transform transform ${isMobileNavOpen ? 'translate-y-0' : '-translate-y-full'} md:hidden`}>
+        <div className="relative">
+          <input
+            type="text"
+            className="bg-white rounded-full pl-4 pr-10 py-2 w-full focus:outline-none focus:ring-2 focus:ring-fd-pink-dark shadow-md"
+            placeholder="Search..."
+            style={{ border: "1px solid #FFB6C1" }} // Added border to match the pink theme
+          />
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+            <CustomIcon Icon={FaSearch} size="16" variant="primary" style={{ color: '#FFB6C1' }} />
+          </div>
+        </div>
+      </div>
     </>
   );
 };
