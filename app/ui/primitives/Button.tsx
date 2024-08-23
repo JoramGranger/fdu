@@ -10,6 +10,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  className?: string;  // New className prop
 }
 
 const CustomButton: React.FC<ButtonProps> = ({
@@ -18,6 +19,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   onClick,
   type = 'button',
   disabled = false,
+  className,  // Accepting className as a prop
 }) => {
   const baseStyles = 'px-4 py-2 rounded font-semibold focus:outline-none';
 
@@ -36,7 +38,7 @@ const CustomButton: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={clsx(baseStyles, variantStyles, disabledStyles)}
+      className={clsx(baseStyles, variantStyles, disabledStyles, className)}  // Applying the custom className
     >
       {children}
     </button>

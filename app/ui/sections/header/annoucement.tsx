@@ -26,6 +26,7 @@ const Container = styled.div`
     box-sizing: border-box;
     width: 100%;
     position: relative;
+    z-index: 10;
 `;
 
 const Marquee = styled.div`
