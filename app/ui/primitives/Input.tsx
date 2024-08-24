@@ -6,7 +6,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: 'primary' | 'secondary' | 'danger' | 'text';
 }
 
-const Input: React.FC<InputProps> = ({ variant = 'primary', ...props }) => {
+const CustomInput: React.FC<InputProps> = ({ variant = 'primary', ...props }) => {
   let variantClasses = '';
 
   switch (variant) {
@@ -35,4 +35,4 @@ const Input: React.FC<InputProps> = ({ variant = 'primary', ...props }) => {
   );
 };
 
-export default Input;
+export default CustomInput;
