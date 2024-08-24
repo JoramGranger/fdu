@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomButton from '@/app/ui/primitives/Button';
 import CustomInput from '../ui/primitives/Input';
 import CustomLink from '@/app/ui/primitives/Link';
 import Paragraph from '@/app/ui/primitives/Paragraph';
-import { FaGoogle, FaFacebook } from 'react-icons/fa';
-import CustomIcon from '@/app/ui/primitives/Icon';
 import Image from 'next/image';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4">
-      <div className="w-full max-w-md bg-white p-8 shadow-md rounded-md">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-fd-pink-lite px-4">
+      <div className="w-full max-w-md bg-fd-pink-lite p-8 shadow-md rounded-md border border-fd-pink-dark">
         {/* Logo */}
         <div className="flex justify-center mb-6">
           <Image
@@ -35,6 +36,8 @@ const Login = () => {
               placeholder="Email"
               variant="primary"
               className="w-full"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -45,6 +48,8 @@ const Login = () => {
               placeholder="Password"
               variant="primary"
               className="w-full"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
@@ -67,21 +72,14 @@ const Login = () => {
           </div>
         </form>
 
-        {/* Social Media Login */}
-        <div className="flex justify-center items-center mb-4">
+        {/* Create Account Link */}
+        <div className="text-center">
           <Paragraph size="sm" className="text-gray-500">
-            Or continue with
+            Don't have an account? 
+            <CustomLink href="/create-account" variant="text" className="ml-2">
+              Create an account
+            </CustomLink>
           </Paragraph>
-        </div>
-        <div className="flex justify-between items-center">
-          <CustomButton variant="secondary" className="w-full mr-2 flex items-center justify-center">
-            <CustomIcon Icon={FaGoogle} size={20} />
-            <span className="ml-2">Google</span>
-          </CustomButton>
-          <CustomButton variant="secondary" className="w-full ml-2 flex items-center justify-center">
-            <CustomIcon Icon={FaFacebook} size={20} />
-            <span className="ml-2">Facebook</span>
-          </CustomButton>
         </div>
       </div>
     </div>
