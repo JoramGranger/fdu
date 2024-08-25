@@ -23,16 +23,6 @@ const UserSideNav: React.FC<UserSideNavProps> = ({ selectedSection, setSelectedS
           <CustomLink 
             href="#"
             variant="text"
-            onClick={() => setSelectedSection('change-password')}
-            className={selectedSection === 'change-password' ? 'text-fd-pink-dark' : ''}
-          >
-            Change Password
-          </CustomLink>
-        </li>
-        <li>
-          <CustomLink 
-            href="#"
-            variant="text"
             onClick={() => setSelectedSection('address-book')}
             className={selectedSection === 'address-book' ? 'text-fd-pink-dark' : ''}
           >
