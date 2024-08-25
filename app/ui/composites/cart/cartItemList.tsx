@@ -2,6 +2,7 @@ import React from 'react';
 import CartItem from './cartItem';
 
 interface CartItemType {
+  id: number;
   image: string;
   name: string;
   quantity: number;
@@ -10,18 +11,22 @@ interface CartItemType {
 
 interface CartItemListProps {
   cartItems: CartItemType[];
+  onIncrement: (id: number) => void;
+  onDecrement: (id: number) => void;
 }
 
-const CartItemList: React.FC<CartItemListProps> = ({ cartItems }) => {
+const CartItemList: React.FC<CartItemListProps> = ({ cartItems, onIncrement, onDecrement }) => {
   return (
     <div className="space-y-4">
-      {cartItems.map((item, index) => (
+      {cartItems.map((item) => (
         <CartItem
-          key={index}
+          key={item.id}
           image={item.image}
           name={item.name}
           quantity={item.quantity}
           price={item.price}
+          onIncrement={() => onIncrement(item.id)}
+          onDecrement={() => onDecrement(item.id)}
         />
       ))}
     </div>

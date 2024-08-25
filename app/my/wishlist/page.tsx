@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CustomButton from '@/app/ui/primitives/Button';
 import Paragraph from '@/app/ui/primitives/Paragraph';
-import WishlistItem from './WishlistItem';
+import WishlistItem from './wishListItem';
 
 // Define the type for a wishlist item
 interface WishlistItem {

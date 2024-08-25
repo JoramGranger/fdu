@@ -7,6 +7,7 @@ import Order from "./orders/page";
 import Address from "./address-book/page";
 import Wishlist from "./wishlist/page";
 import PaymentMethod from './payment-methods/page';
+import Cart from './cart/page'
 
 export default function My() {
   const [selectedSection, setSelectedSection] = useState('profile');
@@ -23,6 +24,8 @@ export default function My() {
         return <Wishlist />;
       case 'payment-methods':
         return <PaymentMethod />;
+      case 'cart':
+        return <Cart />;
       default:
         return <Profile />;
     }

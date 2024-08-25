@@ -13,6 +13,16 @@ const UserSideNav: React.FC<UserSideNavProps> = ({ selectedSection, setSelectedS
           <CustomLink 
             href="#"
             variant="text"
+            onClick={() => setSelectedSection('cart')}
+            className={selectedSection === 'cart' ? 'text-fd-pink-dark' : ''}
+          >
+            Cart
+          </CustomLink>
+          </li>
+        <li>
+          <CustomLink 
+            href="#"
+            variant="text"
             onClick={() => setSelectedSection('profile')}
             className={selectedSection === 'profile' ? 'text-fd-pink-dark' : ''}
           >
