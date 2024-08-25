@@ -24,9 +24,9 @@ const CustomButton: React.FC<ButtonProps> = ({
   const baseStyles = 'px-4 py-2 rounded font-semibold focus:outline-none';
 
   const variantStyles = clsx({
-    'bg-black text-fd-pink-lite hover:bg-gray-800': variant === 'primary',
-    'bg-fd-pink-lite text-black outline hover:bg-fd-pink-dark': variant === 'secondary',
-    'bg-red-500 text-white hover:bg-red-600': variant === 'danger',
+    'bg-black text-fd-pink-lite outline outline-black hover:bg-gray-800': variant === 'primary',
+    'bg-fd-pink-lite text-black outline outline-black hover:bg-fd-pink-dark': variant === 'secondary',
+    'bg-red-500 text-white outline outline-red-500 hover:bg-red-600': variant === 'danger',
   });
 
   const disabledStyles = disabled

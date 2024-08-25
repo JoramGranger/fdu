@@ -6,7 +6,7 @@ import Paragraph from '@/app/ui/primitives/Paragraph';
 import Image from 'next/image';
 import { FaUserCircle } from 'react-icons/fa';
 import EditProfileModal from './editProfileModal';
-import ChangePasswordModal from './ChangePasswordModal';
+import ChangePasswordModal from './changePasswordModal';
 
 export default function Profile() {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
