@@ -1,20 +1,29 @@
+import React, { useState } from 'react';
 import CustomButton from '@/app/ui/primitives/Button';
 import CustomInput from '@/app/ui/primitives/Input';
 import CustomIcon from '@/app/ui/primitives/Icon';
 import Paragraph from '@/app/ui/primitives/Paragraph';
 import Image from 'next/image';
 import { FaUserCircle } from 'react-icons/fa';
-import { useState } from 'react';
+import EditProfileModal from './editProfileModal';
 
 export default function Profile() {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       setProfilePicture(file);
-      // Handle uploading the file to the server if needed
     }
+  };
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleSave = (details: { email: string; phone: string; address: string }) => {
+    // Handle saving user details
+    console.log('Saved details:', details);
   };
 
   return (
@@ -89,13 +98,16 @@ export default function Profile() {
 
       {/* Bottom Section */}
       <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
-        <CustomButton variant="secondary" className="w-full md:w-auto">
+        <CustomButton variant="secondary" className="w-full md:w-auto" onClick={handleOpenModal}>
           Edit Profile
         </CustomButton>
         <CustomButton variant="danger" className="w-full md:w-auto">
           Change Password
         </CustomButton>
       </div>
+
+      {/* Modal */}
+      <EditProfileModal isOpen={isModalOpen} onClose={handleCloseModal} onSave={handleSave} />
     </div>
   );
 }
