@@ -16,10 +16,10 @@ const CustomInput: React.FC<InputProps> = ({ variant = 'primary', className, typ
 
   const baseStyles = 'border-0 border-b-2 p-2 focus:outline-none bg-transparent w-full';
   const variantStyles = clsx({
-    'border-b-black focus:border-b-fd-pink-dark': variant === 'primary',
+    'border-b-black focus:border-b-fd-pink-dark text-black': variant === 'primary',
     'border-b-fd-pink-lite focus:ring-fd-pink-lite': variant === 'secondary',
     'border-b-red-500 focus:ring-red-500': variant === 'danger',
-    'border-b-transparent focus:ring-black': variant === 'text',
+    'border-b-transparent focus:ring-black text-black': variant === 'text',
   });
 
   return (

@@ -7,7 +7,7 @@ interface UserSideNavProps {
 
 const UserSideNav: React.FC<UserSideNavProps> = ({ selectedSection, setSelectedSection }) => {
   return (
-    <nav className="w-64 bg-transparent p-4">
+    <nav className="hidden md:block w-64 bg-transparent p-4">
       <ul className="space-y-4">
         <li>
           <CustomLink 
