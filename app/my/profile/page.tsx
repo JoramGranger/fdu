@@ -6,10 +6,12 @@ import Paragraph from '@/app/ui/primitives/Paragraph';
 import Image from 'next/image';
 import { FaUserCircle } from 'react-icons/fa';
 import EditProfileModal from './editProfileModal';
+import ChangePasswordModal from './ChangePasswordModal';
 
 export default function Profile() {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] = useState(false);
 
   const handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -18,12 +20,19 @@ export default function Profile() {
     }
   };
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenEditProfileModal = () => setIsEditProfileModalOpen(true);
+  const handleCloseEditProfileModal = () => setIsEditProfileModalOpen(false);
 
-  const handleSave = (details: { email: string; phone: string; address: string }) => {
-    // Handle saving user details
+  const handleOpenChangePasswordModal = () => setIsChangePasswordModalOpen(true);
+  const handleCloseChangePasswordModal = () => setIsChangePasswordModalOpen(false);
+
+  const handleSaveProfile = (details: { email: string; phone: string; address: string }) => {
     console.log('Saved details:', details);
+  };
+
+  const handleSavePassword = (currentPassword: string, newPassword: string) => {
+    // Logic to save the new password
+    console.log('Password change:', { currentPassword, newPassword });
   };
 
   return (
@@ -98,16 +107,17 @@ export default function Profile() {
 
       {/* Bottom Section */}
       <div className="flex flex-col md:flex-row justify-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
-        <CustomButton variant="secondary" className="w-full md:w-auto" onClick={handleOpenModal}>
+        <CustomButton variant="secondary" className="w-full md:w-auto" onClick={handleOpenEditProfileModal}>
           Edit Profile
         </CustomButton>
-        <CustomButton variant="danger" className="w-full md:w-auto">
+        <CustomButton variant="danger" className="w-full md:w-auto" onClick={handleOpenChangePasswordModal}>
           Change Password
         </CustomButton>
       </div>
 
-      {/* Modal */}
-      <EditProfileModal isOpen={isModalOpen} onClose={handleCloseModal} onSave={handleSave} />
+      {/* Modals */}
+      <EditProfileModal isOpen={isEditProfileModalOpen} onClose={handleCloseEditProfileModal} onSave={handleSaveProfile} />
+      <ChangePasswordModal isOpen={isChangePasswordModalOpen} onClose={handleCloseChangePasswordModal} onSave={handleSavePassword} />
     </div>
   );
 }
