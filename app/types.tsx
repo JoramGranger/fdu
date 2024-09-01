@@ -17,3 +17,14 @@ export interface Order {
     deliveryAddress: string;
     items: OrderItem[];
 }
+
+export type Product = {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+    rating: number;
+    reviews: number;
+  };
+  

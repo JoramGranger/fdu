@@ -4,6 +4,7 @@ import Payment from './payment';
 import PlaceOrder from './placeOrder';
 import ReviewOrder from './reviewOrder';
 import Shipping from './shipping';
+import CustomButton from '../ui/primitives/Button';
 
 const CheckoutSteps = () => {
   const [currentStep, setCurrentStep] = useState(0);
