@@ -20,7 +20,7 @@ const CategoriesSection = () => {
   ];
 
   return (
-    <div className="relative my-32 px-32 rounded-lg">
+    <div className="relative md:my-32 md:px-32 my-32 px-4 rounded-lg">
       <SectionTitle smallTitle="categories" largeTitle="Shop By Category" />
       <ScrollContainer scrollAmount={300} buttonSize={18}>
         {categories.map((category, index) => (

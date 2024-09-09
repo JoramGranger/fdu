@@ -10,7 +10,7 @@ interface CategoryCardProps {
 const CategoryCard: React.FC<CategoryCardProps> = ({ icon, title, link }) => {
   return (
     <Link href={link}>
-      <div className="block border mx-2 h-40 w-40 border-black rounded-lg p-4 flex flex-col items-center justify-center bg-pink-light hover:bg-fd-pink-dark transition-colors duration-300 ease-in-out">
+      <div className="block border mx-3 h-40 w-40 border-black rounded-lg p-4 flex flex-col items-center justify-center bg-pink-light hover:bg-fd-pink-dark transition-colors duration-300 ease-in-out">
         <div className="text-4xl mb-2 flex items-center justify-center">
           {icon}
         </div>
