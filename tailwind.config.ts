@@ -18,7 +18,17 @@ const config: Config = {
           'lite': '#FDE2F3',
           'dark': '#FFB6C1',
         },
-      }
+      },
+      keyframes: {
+        zoomInOut: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.5)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        zoomInOut: 'zoomInOut 10s infinite',
+      },
     },
   },
   plugins: [],
