@@ -53,7 +53,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative max-w-6xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4 z-10">
       {/* Slides */}
       <div className="overflow-hidden">
         <div
